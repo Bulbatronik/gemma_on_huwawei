@@ -1,0 +1,9 @@
+<div class="root">
+  <text class="prompt">{{prompt}}</text>
+  <text class="answer">{{answer}}</text>
+  <text class="status">{{status}}</text>
+  <div class="row">
+    <div class="btn" onclick="main"><text class="bt">{{btn}}</text></div>
+    <div class="btn2" onclick="menu"><text class="bt">Menu</text></div>
+  </div>
+</div>

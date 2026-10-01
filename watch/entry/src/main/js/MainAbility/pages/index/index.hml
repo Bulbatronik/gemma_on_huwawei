@@ -1,0 +1,14 @@
+<div class="root">
+  <text class="title">GemmaNano</text>
+  <text class="sub">{{status}}</text>
+  <div class="btn" onclick="goChat">
+    <text class="bt">Chat</text>
+  </div>
+  <div class="btn" onclick="goInstall">
+    <text class="bt">{{installLabel}}</text>
+  </div>
+  <div class="btn2" onclick="goBench">
+    <text class="bt">Benchmark</text>
+  </div>
+  <text class="foot">{{foot}}</text>
+</div>

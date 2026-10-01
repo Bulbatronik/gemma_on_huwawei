@@ -1,0 +1,3 @@
+<div class="root">
+  <text class="t">{{msg}}</text>
+</div>

@@ -1,0 +1,6 @@
+{
+  "modelVersion": "5.0.4",
+  "description": "GemmaNano: a tiny Gemma-derived language model running fully on a Huawei Watch GT 4 (Lite Wearable, JS FA).",
+  "dependencies": {},
+  "devDependencies": {}
+}

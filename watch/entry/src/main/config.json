@@ -1,0 +1,65 @@
+{
+  "app": {
+    "bundleName": "com.example.gemmanano",
+    "vendor": "example",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "deviceType": [
+      "liteWearable"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "name": ".MainAbility",
+        "srcLanguage": "js",
+        "srcPath": "MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
+        "type": "page"
+      }
+    ],
+    "js": [
+      {
+        "pages": [
+          "pages/index/index",
+          "pages/kb/index",
+          "pages/gen/index",
+          "pages/bench/index",
+          "pages/i000/index",
+          "pages/i001/index",
+          "pages/i002/index",
+          "pages/i003/index",
+          "pages/i004/index",
+          "pages/i005/index",
+          "pages/i006/index",
+          "pages/i007/index",
+          "pages/i008/index",
+          "pages/i009/index",
+          "pages/i010/index",
+          "pages/i011/index",
+          "pages/i012/index",
+          "pages/i013/index",
+          "pages/i014/index",
+          "pages/i015/index",
+          "pages/i016/index",
+          "pages/i017/index",
+          "pages/i018/index",
+          "pages/i019/index",
+          "pages/i020/index",
+          "pages/i021/index"
+        ],
+        "name": ".MainAbility"
+      }
+    ]
+  }
+}

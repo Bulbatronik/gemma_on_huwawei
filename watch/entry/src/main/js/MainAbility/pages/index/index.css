@@ -1,0 +1,57 @@
+.root {
+  width: 466px;
+  height: 466px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+.title {
+  width: 300px;
+  height: 44px;
+  font-size: 34px;
+  color: #8ab4f8;
+  text-align: center;
+}
+.sub {
+  width: 340px;
+  height: 56px;
+  font-size: 18px;
+  color: #b0b0b0;
+  text-align: center;
+  text-overflow: break;
+  margin-bottom: 8px;
+}
+.btn {
+  width: 260px;
+  height: 58px;
+  border-radius: 29px;
+  background-color: #1a73e8;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.btn2 {
+  width: 260px;
+  height: 58px;
+  border-radius: 29px;
+  background-color: #303134;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.bt {
+  width: 240px;
+  height: 34px;
+  font-size: 26px;
+  color: #ffffff;
+  text-align: center;
+}
+.foot {
+  width: 260px;
+  height: 26px;
+  font-size: 15px;
+  color: #707070;
+  text-align: center;
+  margin-top: 12px;
+}

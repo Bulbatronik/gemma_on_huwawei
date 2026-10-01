@@ -1,0 +1,9 @@
+<div class="root">
+  <text class="title">Benchmark</text>
+  <text class="out">{{out}}</text>
+  <div class="row">
+    <div class="btn" onclick="speed"><text class="bt">Speed</text></div>
+    <div class="btn" onclick="heap"><text class="bt">Heap</text></div>
+  </div>
+  <div class="btn2" onclick="menu"><text class="bt">Menu</text></div>
+</div>

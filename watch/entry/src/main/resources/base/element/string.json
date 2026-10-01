@@ -1,0 +1,6 @@
+{
+  "string": [
+    { "name": "MainAbility_label", "value": "GemmaNano" },
+    { "name": "MainAbility_desc", "value": "Tiny on-device language model" }
+  ]
+}

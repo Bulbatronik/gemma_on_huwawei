@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+/work/
+/out/*
+!/out/demo/
+tests/jerry/.build/

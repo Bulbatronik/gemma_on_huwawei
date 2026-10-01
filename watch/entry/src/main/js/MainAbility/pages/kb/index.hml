@@ -1,0 +1,50 @@
+<!-- Custom keyboard: Lite Wearable has no system input method.
+     Rules learned from real devices: static key nodes, bare-name onclick, fixed sizes, no regex. -->
+<div class="root">
+  <div class="top">
+    <div class="sbtn" onclick="back"><text class="st">Menu</text></div>
+    <div class="sbtn" onclick="idea"><text class="st">Idea</text></div>
+  </div>
+  <text class="view">{{view}}</text>
+  <div class="row">
+    <div class="key" onclick="k0"><text class="kt">a</text></div>
+    <div class="key" onclick="k1"><text class="kt">b</text></div>
+    <div class="key" onclick="k2"><text class="kt">c</text></div>
+    <div class="key" onclick="k3"><text class="kt">d</text></div>
+    <div class="key" onclick="k4"><text class="kt">e</text></div>
+    <div class="key" onclick="k5"><text class="kt">f</text></div>
+    <div class="key" onclick="k6"><text class="kt">g</text></div>
+  </div>
+  <div class="row">
+    <div class="key" onclick="k7"><text class="kt">h</text></div>
+    <div class="key" onclick="k8"><text class="kt">i</text></div>
+    <div class="key" onclick="k9"><text class="kt">j</text></div>
+    <div class="key" onclick="k10"><text class="kt">k</text></div>
+    <div class="key" onclick="k11"><text class="kt">l</text></div>
+    <div class="key" onclick="k12"><text class="kt">m</text></div>
+    <div class="key" onclick="k13"><text class="kt">n</text></div>
+  </div>
+  <div class="row">
+    <div class="key" onclick="k14"><text class="kt">o</text></div>
+    <div class="key" onclick="k15"><text class="kt">p</text></div>
+    <div class="key" onclick="k16"><text class="kt">q</text></div>
+    <div class="key" onclick="k17"><text class="kt">r</text></div>
+    <div class="key" onclick="k18"><text class="kt">s</text></div>
+    <div class="key" onclick="k19"><text class="kt">t</text></div>
+    <div class="key" onclick="k20"><text class="kt">u</text></div>
+  </div>
+  <div class="row">
+    <div class="key" onclick="k21"><text class="kt">v</text></div>
+    <div class="key" onclick="k22"><text class="kt">w</text></div>
+    <div class="key" onclick="k23"><text class="kt">x</text></div>
+    <div class="key" onclick="k24"><text class="kt">y</text></div>
+    <div class="key" onclick="k25"><text class="kt">z</text></div>
+    <div class="key" onclick="k26"><text class="kt">,</text></div>
+    <div class="key" onclick="k27"><text class="kt">?</text></div>
+  </div>
+  <div class="row2">
+    <div class="fkey" onclick="del"><text class="ft">DEL</text></div>
+    <div class="space" onclick="sp"><text class="ft">space</text></div>
+    <div class="gokey" onclick="go"><text class="ft">ASK</text></div>
+  </div>
+</div>
