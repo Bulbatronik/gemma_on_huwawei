@@ -40,7 +40,7 @@ export default {
   b64: b64,
   // items: [[fileName, base64], ...];  next: page uri or '' for the last page
   run: function (vm, page, pages, items, next, modelId) {
-    var i = 0;
+    var i = 0, mkCode = '?';
     vm.msg = 'Installing ' + page + ' / ' + pages;
     function done() {
       if (next) {
@@ -69,9 +69,9 @@ export default {
           i++;
           setTimeout(step, 0);
         },
-        fail: function (d, code) { vm.msg = 'write ' + it[0] + ' failed: ' + code; }
+        fail: function (d, code) { vm.msg = 'write ' + it[0] + ' failed: ' + code + ' (mkdir ' + mkCode + ')'; }
       });
     }
-    F.ensure(function () { step(); });
+    F.ensure(function (mk) { mkCode = mk; step(); });
   }
 };
