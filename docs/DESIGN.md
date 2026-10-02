@@ -84,4 +84,3 @@ writes a marker file with the model id. The installer runs once per model.
 2. **readArrayBuffer latency** → block size. If ~20 ms+ per call dominates, larger blocks (4 KB) and
    batched prefill become worthwhile.
 3. **Free heap on the gen page** → `ctx` and preset.
-4. Whether `text-overflow: break` wraps on the device. If not, the gen page needs manual line splitting.

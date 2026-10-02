@@ -40,7 +40,7 @@ export default {
   // items: [[fileName, base64], ...];  next: page uri or '' for the last page
   run: function (vm, page, pages, items, next, modelId) {
     var i = 0;
-    vm.msg = 'Installing model\n' + page + ' / ' + pages;
+    vm.msg = 'Installing ' + page + ' / ' + pages;
     function done() {
       if (next) {
         router.replace({ uri: next });

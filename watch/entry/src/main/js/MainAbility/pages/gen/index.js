@@ -9,6 +9,7 @@ import router from '@system.router';
 import brightness from '@system.brightness';
 import GN from '../../common/gn_engine.js';
 import META from '../../common/gn_meta.js';
+import W from '../../common/gn_wrap.js';
 
 var S = null;
 
@@ -34,6 +35,8 @@ export default {
   data: {
     prompt: '',
     answer: '',
+    p0: '', p1: '',
+    a0: '', a1: '', a2: '', a3: '', a4: '', a5: '', a6: '',
     status: 'Loading...',
     btn: 'Stop'
   },
@@ -45,6 +48,7 @@ export default {
       uri: 'internal://app/prompt',
       success: function (d) {
         vm.prompt = d.text;
+        W.fill(vm, 'p', 2, d.text, 28, false);
         vm.loadVocab(GN.normPrompt(d.text));
       },
       fail: function (d, code) { vm.fail('no prompt (' + code + ')'); }
@@ -172,6 +176,7 @@ export default {
       success: function (d) {
         var s = bytesToStr(d.buffer);
         vm.answer = vm.answer.length === 0 && s.charAt(0) === ' ' ? s.substring(1) : vm.answer + s;
+        W.fill(vm, 'a', 7, vm.answer, 28, true);
         vm.nextToken();
       },
       fail: function (d, code) { vm.fail('vocab read failed (' + code + ')'); }

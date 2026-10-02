@@ -125,6 +125,7 @@ onPage = function (uri, vm) {
         clearInterval(iv);
         console.log('STATUS: ' + vm.status);
         console.log('ANSWER: ' + vm.answer);
+        console.log('SCREEN: ' + JSON.stringify([vm.p0, vm.p1, vm.a0, vm.a1, vm.a2, vm.a3, vm.a4, vm.a5, vm.a6]));
         console.log('stats: ' + JSON.stringify(stats) + ' in ' + (Date.now() - t0) + ' ms');
         process.exit(vm.status.indexOf('done') >= 0 ? 0 : 1);
       }

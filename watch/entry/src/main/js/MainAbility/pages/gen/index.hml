@@ -1,6 +1,13 @@
 <div class="root">
-  <text class="prompt">{{prompt}}</text>
-  <text class="answer">{{answer}}</text>
+  <text class="prompt">{{p0}}</text>
+  <text class="prompt">{{p1}}</text>
+  <text class="answer">{{a0}}</text>
+  <text class="answer">{{a1}}</text>
+  <text class="answer">{{a2}}</text>
+  <text class="answer">{{a3}}</text>
+  <text class="answer">{{a4}}</text>
+  <text class="answer">{{a5}}</text>
+  <text class="answer">{{a6}}</text>
   <text class="status">{{status}}</text>
   <div class="row">
     <div class="btn" onclick="main"><text class="bt">{{btn}}</text></div>

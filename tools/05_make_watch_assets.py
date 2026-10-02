@@ -29,11 +29,11 @@ CSS = """.root {
 }
 .t {
   width: 320px;
-  height: 120px;
+  height: 40px;
   font-size: 26px;
   color: #ffffff;
   text-align: center;
-  text-overflow: break;
+  text-overflow: ellipsis;
 }
 """
 

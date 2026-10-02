@@ -8,20 +8,19 @@
 }
 .prompt {
   width: 300px;
-  height: 52px;
+  height: 24px;
   font-size: 18px;
   color: #8ab4f8;
   text-align: center;
-  text-overflow: break;
+  text-overflow: ellipsis;
 }
 .answer {
   width: 390px;
-  height: 222px;
+  height: 31px;
   font-size: 22px;
   color: #ffffff;
   text-align: center;
-  text-overflow: break;
-  margin-top: 6px;
+  text-overflow: ellipsis;
 }
 .status {
   width: 330px;

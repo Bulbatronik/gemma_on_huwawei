@@ -15,12 +15,11 @@
 }
 .out {
   width: 380px;
-  height: 230px;
+  height: 30px;
   font-size: 19px;
   color: #ffffff;
   text-align: center;
-  text-overflow: break;
-  margin-top: 4px;
+  text-overflow: ellipsis;
 }
 .row {
   width: 270px;

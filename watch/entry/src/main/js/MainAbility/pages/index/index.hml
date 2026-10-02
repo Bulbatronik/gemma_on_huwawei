@@ -1,6 +1,7 @@
 <div class="root">
   <text class="title">GemmaNano</text>
-  <text class="sub">{{status}}</text>
+  <text class="sub">{{s0}}</text>
+  <text class="sub">{{s1}}</text>
   <div class="btn" onclick="goChat">
     <text class="bt">Chat</text>
   </div>

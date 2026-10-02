@@ -1,6 +1,12 @@
 <div class="root">
   <text class="title">Benchmark</text>
-  <text class="out">{{out}}</text>
+  <text class="out">{{o0}}</text>
+  <text class="out">{{o1}}</text>
+  <text class="out">{{o2}}</text>
+  <text class="out">{{o3}}</text>
+  <text class="out">{{o4}}</text>
+  <text class="out">{{o5}}</text>
+  <text class="out">{{o6}}</text>
   <div class="row">
     <div class="btn" onclick="speed"><text class="bt">Speed</text></div>
     <div class="btn" onclick="heap"><text class="bt">Heap</text></div>

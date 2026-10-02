@@ -15,12 +15,11 @@
 }
 .sub {
   width: 340px;
-  height: 56px;
+  height: 26px;
   font-size: 18px;
   color: #b0b0b0;
   text-align: center;
-  text-overflow: break;
-  margin-bottom: 8px;
+  text-overflow: ellipsis;
 }
 .btn {
   width: 260px;

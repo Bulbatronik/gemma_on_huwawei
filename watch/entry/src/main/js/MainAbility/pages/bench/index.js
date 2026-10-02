@@ -9,6 +9,7 @@
  */
 import file from '@system.file';
 import router from '@system.router';
+import W from '../../common/gn_wrap.js';
 
 var hold = null;
 
@@ -33,19 +34,24 @@ function macTest() {
 
 export default {
   data: {
-    out: 'Speed: compute + flash read test (~15 s).\nHeap: free memory test (may close the app; reopen this page to see the result).'
+    out: '',
+    o0: '', o1: '', o2: '', o3: '', o4: '', o5: '', o6: ''
+  },
+  show(t) {
+    this.out = t;
+    W.fill(this, 'o', 7, t, 30, true);
   },
   onInit() {
     var vm = this;
+    vm.show('Speed: compute + flash read test (~15 s).\nHeap: free memory test. It may close the app: reopen this page to see the result.');
     file.readText({
       uri: 'internal://app/heap',
       success: function (d) {
         var t = d.text;
         if (t.indexOf('probing') === 0) {
-          vm.out = 'Last heap test stopped the app at ~' + t.substring(8) + ' KB, so about ' +
-            t.substring(8) + ' KB of JS heap is free on this page.';
+          vm.show('Last heap test: the app stopped at ~' + t.substring(8) + ' KB, so about that much JS heap is free on this page.');
         } else if (t.length > 0) {
-          vm.out = 'Last heap test: ' + t;
+          vm.show('Last heap test: ' + t);
         }
       }
     });
@@ -55,15 +61,15 @@ export default {
   },
   speed() {
     var vm = this;
-    vm.out = 'Running compute test...';
+    vm.show('Running compute test...');
     setTimeout(function () {
       var macs = macTest();
       var res = 'int8 MAC: ' + (Math.round(macs / 10000) / 100) + ' M/s';
-      vm.out = res + '\nflash test...';
+      vm.show(res + '\nflash test...');
       var sizes = [1024, 2048, 4096, 8192], si = 0;
       function nextSize() {
         if (si >= sizes.length) {
-          vm.out = res;
+          vm.show(res);
           vm.save(res + '\n');
           return;
         }
@@ -79,7 +85,7 @@ export default {
               if (k >= reps) {
                 var ms = (Date.now() - t0) / reps;
                 res = res + '\nread ' + (n / 1024) + 'KB: ' + (Math.round(ms * 10) / 10) + ' ms';
-                vm.out = res;
+                vm.show(res);
                 si++;
                 setTimeout(nextSize, 0);
                 return;
@@ -90,12 +96,12 @@ export default {
                 position: 0,
                 length: n,
                 success: function () { rd(); },
-                fail: function (d, code) { vm.out = res + '\nread failed ' + code; }
+                fail: function (d, code) { vm.show(res + '\nread failed ' + code); }
               });
             }
             rd();
           },
-          fail: function (d, code) { vm.out = res + '\nwrite failed ' + code; }
+          fail: function (d, code) { vm.show(res + '\nwrite failed ' + code); }
         });
       }
       nextSize();
@@ -109,7 +115,7 @@ export default {
         hold = null;
         var msg = 'more than ' + LIMIT + ' KB free';
         file.writeText({ uri: 'internal://app/heap', text: msg });
-        vm.out = 'Heap: ' + msg;
+        vm.show('Heap: ' + msg);
         return;
       }
       file.writeText({
@@ -118,10 +124,10 @@ export default {
         success: function () {
           hold.push(new Uint8Array(2048));
           kb += 2;
-          vm.out = 'Heap test: ' + kb + ' KB allocated...';
+          vm.show('Heap test: ' + kb + ' KB allocated...');
           setTimeout(step, 0);
         },
-        fail: function (d, code) { vm.out = 'cannot write probe file ' + code; }
+        fail: function (d, code) { vm.show('cannot write probe file ' + code); }
       });
     }
     step();

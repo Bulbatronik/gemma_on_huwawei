@@ -51,6 +51,9 @@ def check_css(p):
             bad(p, f"selector list '{sel}' not supported")
         if re.search(r"\.[\w-]+\.[\w-]+", sel) or re.search(r"[>+~:\[]", sel):
             bad(p, f"selector '{sel}' not supported")
+        m2 = re.search(r"text-overflow\s*:\s*([\w-]+)", body)
+        if m2 and m2.group(1) not in ("clip", "ellipsis"):
+            bad(p, f"text-overflow: {m2.group(1)} in '{sel}' (DevEco accepts only clip | ellipsis)")
         if re.search(r"(width|height)\s*:\s*auto", body):
             bad(p, f"'auto' size in '{sel}'")
 
