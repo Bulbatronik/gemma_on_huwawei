@@ -51,7 +51,7 @@ export default {
         uri: F.P + 'ok',
         text: modelId,
         success: function () { router.replace({ uri: 'pages/index/index' }); },
-        fail: function (d, code) { vm.msg = 'marker write failed ' + code; }
+        fail: function (d, code) { vm.msg = 'marker write failed ' + code; vm.msg2 = 'mkdir result: ' + mkCode; }
       });
     }
     function step() {
@@ -69,7 +69,7 @@ export default {
           i++;
           setTimeout(step, 0);
         },
-        fail: function (d, code) { vm.msg = 'write ' + it[0] + ' failed: ' + code + ' (mkdir ' + mkCode + ')'; }
+        fail: function (d, code) { vm.msg = 'write ' + it[0] + ' failed: ' + code; vm.msg2 = 'mkdir result: ' + mkCode; }
       });
     }
     F.ensure(function (mk) { mkCode = mk; step(); });

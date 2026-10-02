@@ -1,3 +1,4 @@
 <div class="root">
   <text class="t">{{msg}}</text>
+  <text class="t2">{{msg2}}</text>
 </div>

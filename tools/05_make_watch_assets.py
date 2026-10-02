@@ -18,14 +18,24 @@ PAGE_JS_LIMIT = 40 * 1024     # real devices refuse pages whose compiled JS is ~
 
 HML = """<div class="root">
   <text class="t">{{msg}}</text>
+  <text class="t2">{{msg2}}</text>
 </div>
 """
 CSS = """.root {
   width: 466px;
   height: 466px;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #000000;
+}
+.t2 {
+  width: 320px;
+  height: 34px;
+  font-size: 22px;
+  color: #9aa0a6;
+  text-align: center;
+  text-overflow: ellipsis;
 }
 .t {
   width: 320px;
@@ -75,7 +85,7 @@ def main():
               "import inst from '../../common/gn_install.js';\n\n"
               f"var D = [\n  {data}\n];\n\n"
               "export default {\n"
-              "  data: { msg: 'Installing...' },\n"
+              "  data: { msg: 'Installing...', msg2: '' },\n"
               f"  onReady() {{ inst.run(this, {k + 1}, {n}, D, {nxt}, '{meta['modelId']}'); }}\n"
               "}\n")
         biggest = max(biggest, len(js))

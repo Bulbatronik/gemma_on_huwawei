@@ -9,6 +9,6 @@ var D = [
 ];
 
 export default {
-  data: { msg: 'Installing...' },
+  data: { msg: 'Installing...', msg2: '' },
   onReady() { inst.run(this, 16, 22, D, 'pages/i016/index', 'e0881d5f812a'); }
 }
