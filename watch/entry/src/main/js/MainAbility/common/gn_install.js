@@ -8,6 +8,7 @@
  * them and writes them with writeArrayBuffer, then routes to the next page.
  */
 import file from '@system.file';
+import F from './gn_fs.js';
 import router from '@system.router';
 
 var TAB = null;
@@ -47,7 +48,7 @@ export default {
         return;
       }
       file.writeText({
-        uri: 'internal://app/ok',
+        uri: F.P + 'ok',
         text: modelId,
         success: function () { router.replace({ uri: 'pages/index/index' }); },
         fail: function (d, code) { vm.msg = 'marker write failed ' + code; }
@@ -60,7 +61,7 @@ export default {
       }
       var it = items[i], buf = b64(it[1]);
       file.writeArrayBuffer({
-        uri: 'internal://app/' + it[0],
+        uri: F.P + it[0],
         buffer: buf,
         position: 0,
         success: function () {
@@ -71,6 +72,6 @@ export default {
         fail: function (d, code) { vm.msg = 'write ' + it[0] + ' failed: ' + code; }
       });
     }
-    step();
+    F.ensure(function () { step(); });
   }
 };

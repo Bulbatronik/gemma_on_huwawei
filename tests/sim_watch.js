@@ -24,8 +24,23 @@ function key(uri) {
   return uri.substring(15);
 }
 
+var DIRS = {};
+function noDir(k) {
+  var i = k.lastIndexOf('/');
+  return i >= 0 ? !DIRS[k.substring(0, i)] : !DIRS[''];
+}
 var file = {
+  mkdir: function (o) {
+    var k = key(o.uri + '/').replace(/\/$/, '');
+    if (!o.recursive && k.indexOf('/') >= 0 && !DIRS[k.substring(0, k.lastIndexOf('/'))]) {
+      return later(function () { o.fail && o.fail('no parent', 301); });
+    }
+    DIRS[''] = true;
+    DIRS[k] = true;
+    later(function () { o.success && o.success(); });
+  },
   writeArrayBuffer: function (o) {
+    if (noDir(key(o.uri))) return later(function () { o.fail && o.fail('no dir', 301); });
     if (!(o.buffer instanceof Uint8Array)) throw new Error('writeArrayBuffer needs Uint8Array');
     stats.writes++;
     var k = key(o.uri), old = FS[k] || Buffer.alloc(0), pos = o.position || 0;
@@ -47,6 +62,7 @@ var file = {
   },
   writeText: function (o) {
     var k = key(o.uri);
+    if (noDir(k)) return later(function () { o.fail && o.fail('no dir', 301); });
     FS[k] = o.append && FS[k] ? Buffer.concat([FS[k], Buffer.from(o.text)]) : Buffer.from(o.text);
     later(function () { o.success && o.success(); });
   },

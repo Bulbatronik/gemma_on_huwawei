@@ -5,6 +5,7 @@
  * reactive view-model small.
  */
 import file from '@system.file';
+import F from '../../common/gn_fs.js';
 import router from '@system.router';
 import brightness from '@system.brightness';
 import GN from '../../common/gn_engine.js';
@@ -45,7 +46,7 @@ export default {
     keepOn(true);
     var vm = this;
     file.readText({
-      uri: 'internal://app/prompt',
+      uri: F.P + 'prompt',
       success: function (d) {
         vm.prompt = d.text;
         W.fill(vm, 'p', 2, d.text, 28, false);
@@ -69,7 +70,7 @@ export default {
     var vm = this;
     vm.status = 'Tokenizing...';
     file.readArrayBuffer({
-      uri: 'internal://app/voc',
+      uri: F.P + 'voc',
       position: 0,
       length: META.vocabBytes,
       success: function (d) {
@@ -130,7 +131,7 @@ export default {
       S.sync = true;
       S.got = null;
       file.readArrayBuffer({
-        uri: 'internal://app/w' + pad3(b),
+        uri: F.P + 'w' + pad3(b),
         position: 0,
         length: META.B,
         success: function (d) {
@@ -170,7 +171,7 @@ export default {
     var vm = this, a = S.offs[t], n = S.offs[t + 1] - a;
     if (n <= 0) { vm.nextToken(); return; }
     file.readArrayBuffer({
-      uri: 'internal://app/voc',
+      uri: F.P + 'voc',
       position: S.po + a,
       length: n,
       success: function (d) {

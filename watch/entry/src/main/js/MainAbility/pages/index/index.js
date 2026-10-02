@@ -1,4 +1,5 @@
 import file from '@system.file';
+import F from '../../common/gn_fs.js';
 import router from '@system.router';
 import META from '../../common/gn_meta.js';
 import W from '../../common/gn_wrap.js';
@@ -16,7 +17,7 @@ export default {
     this.foot = META.name + ' ' + Math.round(META.params / 1000) + 'K params';
     var vm = this;
     file.readText({
-      uri: 'internal://app/ok',
+      uri: F.P + 'ok',
       success: function (d) {
         if (d.text === META.modelId) {
           vm.ready = true;

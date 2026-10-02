@@ -1,4 +1,5 @@
 import file from '@system.file';
+import F from '../../common/gn_fs.js';
 import router from '@system.router';
 
 var KEYS = 'abcdefghijklmnopqrstuvwxyz,?';
@@ -72,11 +73,13 @@ export default {
     if (this.text.length === 0) return;
     var vm = this;
     vm.view = 'thinking...';
+    F.ensure(function () {
     file.writeText({
-      uri: 'internal://app/prompt',
+      uri: F.P + 'prompt',
       text: vm.text,
       success: function () { router.replace({ uri: 'pages/gen/index' }); },
       fail: function (d, code) { vm.view = 'save failed ' + code; }
+    });
     });
   }
 }

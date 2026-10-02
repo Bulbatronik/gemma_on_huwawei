@@ -8,6 +8,7 @@
  * Results are also saved to internal://app/bench.txt.
  */
 import file from '@system.file';
+import F from '../../common/gn_fs.js';
 import router from '@system.router';
 import W from '../../common/gn_wrap.js';
 
@@ -45,7 +46,7 @@ export default {
     var vm = this;
     vm.show('Speed: compute + flash read test (~15 s).\nHeap: free memory test. It may close the app: reopen this page to see the result.');
     file.readText({
-      uri: 'internal://app/heap',
+      uri: F.P + 'heap',
       success: function (d) {
         var t = d.text;
         if (t.indexOf('probing') === 0) {
@@ -57,12 +58,12 @@ export default {
     });
   },
   save(text) {
-    file.writeText({ uri: 'internal://app/bench.txt', text: text, append: true });
+    file.writeText({ uri: F.P + 'bench.txt', text: text, append: true });
   },
   speed() {
     var vm = this;
     vm.show('Running compute test...');
-    setTimeout(function () {
+    F.ensure(function () { setTimeout(function () {
       var macs = macTest();
       var res = 'int8 MAC: ' + (Math.round(macs / 10000) / 100) + ' M/s';
       vm.show(res + '\nflash test...');
@@ -76,7 +77,7 @@ export default {
         var n = sizes[si], buf = new Uint8Array(n);
         for (var i = 0; i < n; i++) buf[i] = i & 255;
         file.writeArrayBuffer({
-          uri: 'internal://app/bt' + n,
+          uri: F.P + 'bt' + n,
           buffer: buf,
           success: function () {
             buf = null;
@@ -92,7 +93,7 @@ export default {
               }
               k++;
               file.readArrayBuffer({
-                uri: 'internal://app/bt' + n,
+                uri: F.P + 'bt' + n,
                 position: 0,
                 length: n,
                 success: function () { rd(); },
@@ -105,21 +106,22 @@ export default {
         });
       }
       nextSize();
-    }, 50);
+    }, 50); });
   },
   heap() {
     var vm = this, kb = 0, LIMIT = 200;
     hold = [];
+    F.ensure(function () { step(); });
     function step() {
       if (kb >= LIMIT) {
         hold = null;
         var msg = 'more than ' + LIMIT + ' KB free';
-        file.writeText({ uri: 'internal://app/heap', text: msg });
+        file.writeText({ uri: F.P + 'heap', text: msg });
         vm.show('Heap: ' + msg);
         return;
       }
       file.writeText({
-        uri: 'internal://app/heap',
+        uri: F.P + 'heap',
         text: 'probing ' + kb,
         success: function () {
           hold.push(new Uint8Array(2048));
@@ -130,7 +132,6 @@ export default {
         fail: function (d, code) { vm.show('cannot write probe file ' + code); }
       });
     }
-    step();
   },
   menu() {
     hold = null;
